@@ -1,0 +1,47 @@
+<div class="login-container">
+  <h1>Connexion</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="ton@email.com"
+      />
+      @if (emailControl?.invalid && emailControl?.touched) {
+        <span class="error">
+          @if (emailControl?.errors?.['required']) { L'email est requis. }
+          @if (emailControl?.errors?.['email']) { Format d'email invalide. }
+        </span>
+      }
+    </div>
+
+    <div class="field">
+      <label for="password">Mot de passe</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="••••••••"
+      />
+      @if (passwordControl?.invalid && passwordControl?.touched) {
+        <span class="error">
+          @if (passwordControl?.errors?.['required']) { Le mot de passe est requis. }
+          @if (passwordControl?.errors?.['minlength']) { Minimum 6 caractères. }
+        </span>
+      }
+    </div>
+
+    @if (errorMessage) {
+      <div class="error-banner">{{ errorMessage }}</div>
+    }
+
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Connexion...' : 'Se connecter' }}
+    </button>
+
+  </form>
+</div>
