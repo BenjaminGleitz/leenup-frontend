@@ -2,6 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { routes } from './app.routes';
+import { csrfInterceptor } from '../core/auth/csrf.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -9,7 +10,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withFetch(),
-      withInterceptors([])
+      withInterceptors([csrfInterceptor])
     ),
   ],
 };

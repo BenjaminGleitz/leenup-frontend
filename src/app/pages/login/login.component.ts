@@ -36,9 +36,7 @@ export class LoginComponent {
     const credentials: LoginCredentials = this.loginForm.value;
 
     this.authService.login(credentials).subscribe({
-      next: () => {
-        this.router.navigate(['/dashboard']);
-      },
+      next: () => this.router.navigate(['/dashboard']),
       error: (err) => {
         this.isLoading = false;
         if (err.status === 401) {

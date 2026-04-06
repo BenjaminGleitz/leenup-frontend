@@ -59,7 +59,8 @@
               "buildTarget": "leenup-frontend:build:production"
             },
             "development": {
-              "buildTarget": "leenup-frontend:build:development"
+              "buildTarget": "leenup-frontend:build:development",
+              "proxyConfig": "proxy.conf.mjs"
             }
           },
           "defaultConfiguration": "development"
